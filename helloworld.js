@@ -32,3 +32,23 @@ const fullName = firstName.concat(' ', lastName);
 
 const greeting = 'Hello! My name is ' + fullName + ' and I am ' + age + ' years old.';
 console.log(greeting);
+
+// Function
+let myFavoriteAnimal = 'my favorite animals'; // outer variable
+function favoriteAnimal(animal1, animal2 = anotherAnimal()) { // default values
+    return `${animal1} and ${animal2} is ${myFavoriteAnimal}!`;
+}
+
+function anotherAnimal() {
+    return 'Dog';
+}
+
+const message = favoriteAnimal('Cat', 'Bird');
+showMessage(message);
+
+function showMessage(message) {
+    message = message || 'empty'; // if message is undefined or otherwise falsy, set it to 'empty'
+    console.log(message);
+}
+
+
