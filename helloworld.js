@@ -34,7 +34,8 @@ const greeting = 'Hello! My name is ' + fullName + ' and I am ' + age + ' years 
 console.log(greeting);
 
 // Function
-let myFavoriteAnimal = 'my favorite animals'; // outer variable
+// Functions should be short and do exactly one thing.
+let myFavoriteAnimal = 'my favorite animals'; // outer variables (Not Recommand)
 function favoriteAnimal(animal1, animal2 = anotherAnimal()) { // default values
     return `${animal1} and ${animal2} is ${myFavoriteAnimal}!`;
 }
@@ -51,4 +52,67 @@ function showMessage(message) {
     console.log(message);
 }
 
+function doNothing () {}
+console.log(doNothing() === undefined); // true
 
+function returnNothing() {
+    return;
+}
+console.log(returnNothing() === undefined); // true
+
+const originals = [1, 2, 3];
+const doubled = originals.map(item => item * 2); // map(), arrow function
+// It's regular anonymous callback function
+// const doubled = originals.map(function (item) {
+//   return item * 2;
+// })
+console.log(doubled); // [2, 4, 6]
+
+// Event loop
+function task(message) {
+    // emulate time consuming task
+    let n = 10000000000;
+    while (n > 0){
+        n--;
+    }
+    console.log(message);
+}
+
+console.log('Start script...');
+setTimeout(() => {
+    task('Download a file.');
+}, 1000);
+console.log('Done!');
+// result: Start script... > Done! > Download a file.
+
+// another practice
+console.log('Hi!');
+
+setTimeout(() => {
+    console.log('Execute immediately.');
+}, 0);
+
+console.log('Bye!');
+// result: Hi! > Bye! > Execute immediately.
+
+function add7 (num) {
+    return num + 7;
+}
+console.log(add7(10));
+
+function multiply (num1, num2) {
+    return num1 * num2;
+}
+console.log(multiply(2,3));
+
+// Util함수로 빼도 될까? 이 함수가 이 책임까지 가져도 되나? 이름만 보고 쓸 수 있나? 
+function capitalize (str) {
+    if (!str) return str;
+
+    // whitespace trim
+    const trimmed = str.trim();
+    if (!trimmed) return trimmed;
+    
+    return trimmed[0].toUpperCase() + trimmed.slice(1).toLowerCase();
+}
+console.log(capitalize('ABCD'));
