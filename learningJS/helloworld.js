@@ -1,0 +1,118 @@
+// String
+const helloWorld = 'Hello, World!';
+const array = helloWorld.split(',');
+const newWorld = array[0] + ' new ' + array[1];
+console.log(newWorld);
+
+// Numbers
+const a = 2;
+const b = 3;
+const result = a + b;
+console.log(result); // 5
+
+// Function & Conditionals
+function numberChecker(number) {
+    if (number === 6) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const result2 = numberChecker(result);
+console.log(result2); // false
+
+// String method: concat()
+const birthYear = 2000;
+const thisYear = 2026;
+const age = thisYear-birthYear;
+const firstName = 'Jenny';
+const lastName = 'Hong';
+const fullName = firstName.concat(' ', lastName);
+
+const greeting = 'Hello! My name is ' + fullName + ' and I am ' + age + ' years old.';
+console.log(greeting);
+
+// Function
+// Functions should be short and do exactly one thing.
+let myFavoriteAnimal = 'my favorite animals'; // outer variables (Not Recommand)
+function favoriteAnimal(animal1, animal2 = anotherAnimal()) { // default values
+    return `${animal1} and ${animal2} is ${myFavoriteAnimal}!`;
+}
+
+function anotherAnimal() {
+    return 'Dog';
+}
+
+const message = favoriteAnimal('Cat', 'Bird');
+showMessage(message);
+
+function showMessage(message) {
+    message = message || 'empty'; // if message is undefined or otherwise falsy, set it to 'empty'
+    console.log(message);
+}
+
+function doNothing () {}
+console.log(doNothing() === undefined); // true
+
+function returnNothing() {
+    return;
+}
+console.log(returnNothing() === undefined); // true
+
+const originals = [1, 2, 3];
+const doubled = originals.map(item => item * 2); // map(), arrow function
+// It's regular anonymous callback function
+// const doubled = originals.map(function (item) {
+//   return item * 2;
+// })
+console.log(doubled); // [2, 4, 6]
+
+// Event loop
+function task(message) {
+    // emulate time consuming task
+    let n = 10000000000;
+    while (n > 0){
+        n--;
+    }
+    console.log(message);
+}
+
+console.log('Start script...');
+setTimeout(() => {
+    task('Download a file.');
+}, 1000);
+console.log('Done!');
+// result: Start script... > Done! > Download a file.
+
+// another practice
+console.log('Hi!');
+
+setTimeout(() => {
+    console.log('Execute immediately.');
+}, 0);
+
+console.log('Bye!');
+// result: Hi! > Bye! > Execute immediately.
+
+function add7 (num) {
+    return num + 7;
+}
+console.log(add7(10));
+
+function multiply (num1, num2) {
+    return num1 * num2;
+}
+console.log(multiply(2,3));
+
+// Util함수로 빼도 될까? 이 함수가 이 책임까지 가져도 되나? 이름만 보고 쓸 수 있나? 
+function capitalize (str) {
+    if (!str) return str;
+
+    // whitespace trim
+    const trimmed = str.trim();
+    if (!trimmed) return trimmed;
+    
+    return trimmed[0].toUpperCase() + trimmed.slice(1).toLowerCase();
+}
+console.log(capitalize('ABCD'));
