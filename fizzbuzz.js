@@ -3,7 +3,7 @@ export function runFizzBuzz() {
     const inputNumber = parseInt(input);
 
     if (isNumber(input)) {
-        const resultElement = document.getElementById("result");
+        const resultElement = document.getElementById("fbResult");
         resultElement.innerHTML = "";
 
         for (let i = 1; i <= inputNumber; i++) {
