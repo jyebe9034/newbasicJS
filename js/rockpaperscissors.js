@@ -78,3 +78,10 @@ export function showResult() {
     const result = document.getElementById("rpsResult");
     result.innerHTML = `Round : ${currentRound}, Your score is ${humanScore} / Computer score is ${computerScore}`;
 }
+
+export function restartRpsGame() {
+    currentRound = 0;
+    humanScore = 0;
+    computerScore = 0;
+    document.getElementById("rpsResult").innerHTML = "";
+}
