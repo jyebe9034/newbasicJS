@@ -25,3 +25,16 @@ console.log(fruits); // [ 'Orange', 'Pear' ]
 fruits.unshift('Apple');
 console.log(fruits); // [ 'Apple', 'Orange', 'Pear' ]
 
+delete fruits[1];
+console.log(fruits); // [ 'Apple', <1 empty item>, 'Pear' ]
+console.log(fruits.length); // 3
+
+fruits[1] = "Cherry";
+console.log(fruits); //  [ 'Apple', 'Cherry', 'Pear' ]
+
+fruits.splice(2, 1); // from index 2 remove 1 element
+console.log(fruits); // [ 'Apple', 'Cherry' ]
+
+fruits = fruits.concat("Orange", "Pear"); // concat return new array
+fruits.splice(0, 3, "Banana", "Pineapple");
+console.log(fruits); // [ 'Banana', 'Pineapple', 'Pear' ]
