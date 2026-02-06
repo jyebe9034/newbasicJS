@@ -38,3 +38,35 @@ console.log(fruits); // [ 'Apple', 'Cherry' ]
 fruits = fruits.concat("Orange", "Pear"); // concat return new array
 fruits.splice(0, 3, "Banana", "Pineapple");
 console.log(fruits); // [ 'Banana', 'Pineapple', 'Pear' ]
+
+// TODO: 리팩토링 map, filter, reduce를 사용해서
+function sumOfTripledEvens(array) {
+    let sum = 0;
+    for (const number of array) {
+        if (number % 2 === 0) {
+            sum += number * 3;
+        }
+    }
+    return sum;
+}
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+sumOfTripledEvens(array);
+
+// map return a new array, so original array is not changed.
+const arr = [1, 2, 3, 4, 5];
+const mappedArr = arr.map((num) => num + 1);
+console.log(mappedArr); // [ 2, 3, 4, 5, 6 ]
+
+// filter
+function isOdd(num) {
+    return num %2 !== 0;
+}
+const oddNums = arr.filter(isOdd);
+console.log(oddNums); // [ 1, 3, 5 ]
+
+// reduce
+const productOfAllNums = arr.reduce((total, currentItem) => {
+    return total * currentItem;
+}, 1);
+console.log(productOfAllNums); // 120
