@@ -4,7 +4,7 @@ export function runFizzBuzz() {
 
     if (isNumber(input)) {
         const resultElement = document.getElementById("fbResult");
-        resultElement.innerHTML = "";
+        resultElement.textContent = "";
 
         for (let i = 1; i <= inputNumber; i++) {
             let list = document.createElement("li");
