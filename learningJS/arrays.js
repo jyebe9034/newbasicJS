@@ -39,7 +39,6 @@ fruits = fruits.concat("Orange", "Pear"); // concat return new array
 fruits.splice(0, 3, "Banana", "Pineapple");
 console.log(fruits); // [ 'Banana', 'Pineapple', 'Pear' ]
 
-// TODO: 리팩토링 map, filter, reduce를 사용해서
 function sumOfTripledEvens(array) {
     let sum = 0;
     for (const number of array) {
@@ -47,11 +46,18 @@ function sumOfTripledEvens(array) {
             sum += number * 3;
         }
     }
+    console.log(`sum is ${sum}`); // sum is 60
     return sum;
+}
+
+function refactoring(array) {
+    const result = array.filter((num) => num % 2 === 0).reduce((total, even) => total + (even * 3), 0);
+    console.log(`result is ${result}`); // result is 60
 }
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 sumOfTripledEvens(array);
+refactoring(array);
 
 // map return a new array, so original array is not changed.
 const arr = [1, 2, 3, 4, 5];
@@ -60,7 +66,7 @@ console.log(mappedArr); // [ 2, 3, 4, 5, 6 ]
 
 // filter
 function isOdd(num) {
-    return num %2 !== 0;
+    return num % 2 !== 0;
 }
 const oddNums = arr.filter(isOdd);
 console.log(oddNums); // [ 1, 3, 5 ]
