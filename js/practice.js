@@ -65,3 +65,10 @@ newContainer.appendChild(p);
 newContainer.appendChild(h3);
 newContainer.appendChild(newDiv);
 
+const btn = document.querySelector("#btn");
+btn.addEventListener("click", (e) => {
+  e.target.style.background = "blue";
+  e.target.style.color = "white";
+  console.log(e.target);
+});
+
