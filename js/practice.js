@@ -72,3 +72,11 @@ btn.addEventListener("click", (e) => {
   console.log(e.target);
 });
 
+const buttons = document.querySelectorAll("#box button");
+
+buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        alert(btn.id);
+    })
+})
+
