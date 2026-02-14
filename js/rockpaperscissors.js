@@ -1,87 +1,78 @@
-
 let humanScore = 0;
 let computerScore = 0;
-let round = 5;
-let currentRound = 0;
-const rps = ['rock', 'paper', 'scissors'];
+let maxPoint = 5;
+const rps = ["rock", "paper", "scissors"];
 
 export function getComputerChoice() {
-    const computerInput = rps[Math.floor(Math.random() * rps.length)];
-    console.log(`computerInput: ${computerInput}`);
-    return computerInput;
+  const computerSelected = rps[Math.floor(Math.random() * rps.length)];
+  return computerSelected;
 }
 
-export function getHumanChoice() {
-    if (currentRound < round) {
-        let input = prompt("Please enter rock, paper, or scissors : ");
-        input = input.trim().toLowerCase();
-        if (rps.includes(input)) {
-            console.log(`humanInput: ${input}`)
-            return input;
-        }
-        alert("Invalid input. Please try again.");
-        return;
+export function playRound(humanSelected, computerSelected) {
+  if (humanSelected === rps[0]) {
+    // human choice 'rock'
+    if (computerSelected === rps[0]) {
+      humanScore++;
+      computerScore++;
+    } else if (computerSelected === rps[1]) {
+      // computer choice 'paper'
+      computerScore++;
+    } else if (computerSelected === rps[2]) {
+      // computer choice 'scissors'
+      humanScore++;
     }
-    alert("Game is over. Please click the restart button!");
+  } else if (humanSelected === rps[1]) {
+    // human choice 'paper'
+    if (computerSelected === rps[1]) {
+      humanScore++;
+      computerScore++;
+    } else if (computerSelected === rps[0]) {
+      // computer choice 'rock'
+      humanScore++;
+    } else if (computerSelected === rps[2]) {
+      // computer choice 'scissors'
+      computerScore++;
+    }
+  } else {
+    // human choice 'scissors'
+    if (computerSelected === rps[2]) {
+      humanScore++;
+      computerScore++;
+    } else if (computerSelected === rps[0]) {
+      // computer choice 'rock'
+      computerScore++;
+    } else if (computerSelected === rps[1]) {
+      // computer choice 'paper'
+      humanScore++;
+    }
+  }
+  showResult();
+}
+
+export function playGame(playerSelected) {
+  if (humanScore >= maxPoint || computerScore >= maxPoint) {
+    alert("Please restart the game");
     return;
-}
-
-export function playRound(humanSelection, computerSelection) {
-    currentRound++;
-    if (humanSelection === rps[0]) { // human choice 'rock'
-        if (computerSelection === rps[0]) {
-            humanScore++;
-            computerScore++;
-            alert("This round is a draw.");
-        } else if (computerSelection === rps[1]) { // computer choice 'paper'
-            computerScore++;
-            alert("You lost this round. Better luck next time!");
-        } else if (computerSelection === rps[2]) { // computer choice 'scissors'
-            humanScore++;
-            alert("You won this round. Nice job!");
-        }
-    } else if (humanSelection === rps[1]) { // human choice 'paper'
-        if (computerSelection === rps[1]) {
-            humanScore++;
-            computerScore++;
-            alert("This round is a draw.");
-        } else if (computerSelection === rps[0]) { // computer choice 'rock'
-            humanScore++;
-            alert("You won this round. Nice job!");
-        } else if (computerSelection === rps[2]) { // computer choice 'scissors'
-            computerScore++;
-            alert("You lost this round. Better luck next time!");
-        }
-    } else { // human choice 'scissors'
-        if (computerSelection === rps[2]) {
-            humanScore++;
-            computerScore++;
-            alert("This round is a draw.");
-        } else if (computerSelection === rps[0]) { // computer choice 'rock'
-            computerScore++;
-            alert("You lost this round. Better luck next time!");
-        } else if (computerSelection === rps[1]) { // computer choice 'paper'
-            humanScore++;
-            alert("You won this round. Nice job!");
-        }
-    }
-    showResult();
-}
-
-export function playGame() {
-    const computerSelection = getComputerChoice();
-    const humanSelection = getHumanChoice();
-    humanSelection ? playRound(humanSelection, computerSelection) : null;
+  }
+  const computerSelection = getComputerChoice();
+  if (playerSelected) {
+    playRound(playerSelected, computerSelection);
+  }
 }
 
 export function showResult() {
-    const result = document.getElementById("rpsResult");
-    result.textContent = `Round : ${currentRound}, Your score is ${humanScore} / Computer score is ${computerScore}`;
+  const result = document.getElementById("rpsResult");
+  if (humanScore === 5) {
+    result.textContent = `You Win!`;
+  } else if (computerScore === 5) {
+    result.textContent = `You Lose!`;
+  } else {
+    result.textContent = `Your score is ${humanScore} / Computer score is ${computerScore}`;
+  }
 }
 
 export function restartRpsGame() {
-    currentRound = 0;
-    humanScore = 0;
-    computerScore = 0;
-    document.getElementById("rpsResult").textContent = "";
+  humanScore = 0;
+  computerScore = 0;
+  document.getElementById("rpsResult").textContent = "";
 }
