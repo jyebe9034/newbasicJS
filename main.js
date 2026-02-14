@@ -8,21 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fbButton.addEventListener("click", runFizzBuzz);
   }
 
-  // const rock = document.getElementById("rock");
-  // if (rock) {
-  //     rock.addEventListener("click", playGame("rock"));
-  // }
-
-  // const paper = document.getElementById("paper");
-  // if (paper) {
-  //     paper.addEventListener("click", playGame("paper"));
-  // }
-
-  // const scissors = document.getElementById("scissors");
-  // if (scissors) {
-  //     scissors.addEventListener("click", playGame("scissors"));
-  // }
-
   const rps = document.getElementsByClassName("runRps");
   for (const selected of rps) {
     selected.addEventListener("click", (event) => {
